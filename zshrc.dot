@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt appendhistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -50,6 +50,7 @@ antigen bundles <<EOBUNDLES
     # Git and github autocompletions and aliases
     git
     git-extras
+    #docker
 
     # Extras
     command-not-found
@@ -84,8 +85,8 @@ else
     key[PageDown]=${terminfo[knp]}
 fi
 
-#key[Up]=${terminfo[kcuu1]}
-#key[Down]=${terminfo[kcud1]}
+key[Up]=${terminfo[kcuu1]}
+key[Down]=${terminfo[kcud1]}
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
