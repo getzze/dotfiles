@@ -25,7 +25,7 @@ antigen use oh-my-zsh
 # Before, install patched powerline (https://github.com/powerline/powerline). Follow installation instruction on the site
 if [[ $TERM == "rxvt-unicode-256color" ]]; then
   antigen theme kolo
-elif [[ $TERM == "xterm" ]]; then
+elif [[ $TERM == "xterm" || $TERM == "xterm-256color" ]]; then
   antigen theme agnoster
 else
   antigen theme kolo
@@ -73,6 +73,7 @@ if [ -f ~/.zkbd/$TERM-:0 ]
 then
     source ~/.zkbd/$TERM-:0 
 else
+    typeset -A key
     key[Home]=${terminfo[khome]}
     key[End]=${terminfo[kend]}
     key[Insert]=${terminfo[kich1]}
