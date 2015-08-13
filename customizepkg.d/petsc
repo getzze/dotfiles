@@ -1,0 +1,7 @@
+# PETSC petsc 3.6.0-1
+# https://aur.archlinux.org/packages/petsc/
+#
+# Patch the PKGBUILD to build the external files in `src` instead of the fakeroot folder `pkg`
+#
+
+patch#pkgbuild#file.patch

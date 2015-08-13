@@ -1,0 +1,45 @@
+3c3
+< pkgver=3.6.0
+---
+> pkgver=3.6.1
+18c18
+< md5sums=('f0dcbf25a8dd7f3069c1f094338c5263')
+---
+> md5sums=('28f842697159e16e2978732480571147')
+33a34
+> 	# force using python2
+36a38,40
+> 	# install external libraries in _build_dir instead of the prefix
+> 	sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
+> 
+55c59
+< 		--prefix=${pkgdir}${_install_dir} \
+---
+> 		--prefix=${_install_dir} \
+63a68,69
+> 	_dest_dir="${pkgdir}${_install_dir}"
+> 
+65c71
+< 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
+---
+> 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install"
+67c73
+< 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
+---
+> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install   # > /dev/null
+69,75c75,81
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscvariables"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/rules"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconf.h"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/petscconfiginfo.h"
+< 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscrules"
+---
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/pkgconfig/PETSc.pc"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/variables"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscvariables"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/rules"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconf.h"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/include/petscconfiginfo.h"
+> 	sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${_dest_dir}/lib/petsc/conf/petscrules"
