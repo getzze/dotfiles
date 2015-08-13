@@ -1,0 +1,7 @@
+# Med med 3.0.8-2
+# https://aur.archlinux.org/packages/med/
+#
+# Patch the PKGBUILD to correctly use set the absolute path to python2 and to use openmpi
+#
+
+patch#pkgbuild#file.patch
