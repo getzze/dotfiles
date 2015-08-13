@@ -1,0 +1,3 @@
+# Rename all games
+
+replace#global#for oldname in net cube blackbox; do#cd $pkgdir/usr/bin\n    for oldname in *; do 
