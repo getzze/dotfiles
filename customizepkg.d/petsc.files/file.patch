@@ -2,32 +2,149 @@
 < pkgver=3.6.0
 ---
 > pkgver=3.6.1
-18c18
+15a16,24
+> optdepends=('trilinos: support for trilinos'
+>     'ptscotch: support for ptscotch parallel graph partitioning library'
+>     'parmetis: support for parmetis parallel graph partitioning library'
+>     'metis: support for metis graph partitioning library'
+>     'pastix: support for the pastix solver'
+>     'superlu: support for the superlu sparse solver'
+>     'hdf5: support for the parallel version of hdf5'
+>     'mumps: support for the mumps sparse solver'
+>     )
+18c27
 < md5sums=('f0dcbf25a8dd7f3069c1f094338c5263')
 ---
 > md5sums=('28f842697159e16e2978732480571147')
-33a34
+24a34,44
+> prepare() {
+> 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+> 
 > 	# force using python2
-36a38,40
+> 	find ${srcdir} -name "*" -type f -exec \
+> 	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+> 
 > 	# install external libraries in _build_dir instead of the prefix
 > 	sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
+> }
 > 
-55c59
+29d48
+< 	#patch -Np1 -i ${startdir}/patch_debug.diff
+34,35c53,87
+< 	find ${srcdir} -name "*" -type f -exec \
+< 	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+---
+> 	CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3"
+> 
+> 	## External downloads
+> 	#for external_pkg in hypre; do
+> 		#CONFOPTS="${CONFOPTS} --download-${external_pkg}=1"
+> 	#done
+>     
+>  	# Add mumps support
+>     if [ -f "/usr/lib/libmumps_common.so" ]; then
+> 		CONFOPTS="${CONFOPTS} --with-mumps=1 --with-mumps-dir=/usr"
+> 	fi
+> 
+>  	# Add hdf5 support
+>     if [[ "$(h5stat -V)" ]]; then
+> 		CONFOPTS="${CONFOPTS} --with-hdf5=1 --with-hdf5-dir=/usr"
+> 	fi
+>  
+>  	# Add scalapack support
+>     if [ -f "/usr/lib/pkgconfig/scalapack.pc" ]; then
+> 		CONFOPTS="${CONFOPTS} --with-scalapack=1 --with-scalapack-dir=/usr"
+> 	fi
+>  
+>  	# Add suitesparse support
+>     if [ -f "/usr/include/SuiteSparse_config.h" ]; then
+> 		CONFOPTS="${CONFOPTS} --with-suitesparse=1 --with-suitesparse-dir=/usr"
+> 	fi
+>  
+>  	# Add metis support
+>     if [ -f "/usr/include/metis.h" ]; then
+> 		CONFOPTS="${CONFOPTS} --with-metis=1 --with-metis-dir=/usr"
+>         # Add parmetis support
+>         if [ -f "/usr/include/parmetis.h" ]; then
+>             CONFOPTS="${CONFOPTS} --with-parmetis=1 --with-parmetis-dir=/usr"
+>         fi
+> 	fi
+37c89,98
+< 	CONFOPTS="--with-shared-libraries=1 --with-clanguage=C++ --COPTFLAGS=-O2 --CXXOPTFLAGS=-O2"
+---
+>     # Add scotch support
+>     if [ "${SCOTCH_DIR}" ]; then
+>         SCOTCH_LIBS="/usr/lib/libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so"
+>         # Include bzip2 if scotch was build with bzip2 support
+>         if [ -f /usr/include/bzlib.h ];then
+>             SCOTCH_LIBS="${SCOTCH_LIBS},libbz2.so"
+>         fi
+>         SCOTCH_LIBS="[${SCOTCH_LIBS}]"
+> 		CONFOPTS="${CONFOPTS} --with-ptscotch=1 --with-ptscotch-lib=${SCOTCH_LIBS} --with-ptscotch-include=${SCOTCH_DIR}"
+> 	fi
+39,42c100,104
+< 	# External downloads
+< 	for external_pkg in ptscotch scalapack metis parmetis superlu mumps pastix hypre suitesparse; do
+< 		CONFOPTS="${CONFOPTS} --download-${external_pkg}=yes"
+< 	done
+---
+> 	# Add superlu support
+> 	SUPERLU_DIR="/usr/include/superlu"
+>     if [ -d "${SUPERLU_DIR}" ]; then
+> 		CONFOPTS="${CONFOPTS} --with-superlu=1 --with-superlu-lib=-lsuperlu --with-superlu-include=${SUPERLU_DIR}"
+> 	fi
+43a106,118
+> 	# Add pastix support
+> 	PASTIX_CONF=$(which pastix-conf)
+>     if [ -f "${PASTIX_CONF}" ]; then
+>         PASTIX_DIR="$($PASTIX_CONF --incs | sed 's/-I//')"
+>         if [ ! -d ${PASTIX_DIR} ]; then
+>             PASTIX_DIR=/usr/include
+>         fi
+> 		#PASTIX_LIBS="$($PASTIX_CONF --libs)"
+>         PASTIX_LIBS="[/usr/lib/libpastix.a,librt.so,libhwloc.so,libpthread.a]"
+>         CONFOPTS="${CONFOPTS} --with-pastix=1 --with-pastix-lib=${PASTIX_LIBS} --with-pastix-include=${PASTIX_DIR}"
+> 	fi
+> 
+> 	# Add trilinos support
+45a121,122
+>         # Add boost support (only useful for trilinos)
+>         CONFOPTS="${CONFOPTS} --with-boost=1 --with-boost-dir=/usr"
+48,50d124
+< 	# Arch specific
+< 	CONFOPTS="${CONFOPTS} --with-boost=1 --with-boost-dir=/usr"
+< 
+52c126
+< 	CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
+---
+> 	#CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
+53a128,129
+> 
+>     #echo ${CONFOPTS}
+55c131
 < 		--prefix=${pkgdir}${_install_dir} \
 ---
 > 		--prefix=${_install_dir} \
-63a68,69
+61a138,144
+> check() {
+> 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+> 	cd ${_build_dir}
+> 
+>     make test
+> }
+> 
+63a147,148
 > 	_dest_dir="${pkgdir}${_install_dir}"
 > 
-65c71
+65c150
 < 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
 ---
 > 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install"
-67c73
+67c152
 < 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
 ---
 > 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install   # > /dev/null
-69,75c75,81
+69,75c154,160
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscvariables"
