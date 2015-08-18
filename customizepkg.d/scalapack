@@ -1,0 +1,7 @@
+# Scalapack scalapack 2.0.2-3
+# https://aur.archlinux.org/packages/scalapack/
+#
+# Bug in the sed files
+#
+
+replace#global#pkg/usr/lib#${pkgdir}/usr/lib
