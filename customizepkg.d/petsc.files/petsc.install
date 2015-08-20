@@ -1,0 +1,10 @@
+post_install() {
+
+cat << EOF
+
+If you install an optional dependency, this package must
+be reinstalled to take the new dependency into account.
+
+EOF
+}
+
