@@ -2,6 +2,16 @@
 < pkgver=3.6.0
 ---
 > pkgver=3.6.1
+5c5
+< _config=arch-linux2-cxx-opt
+---
+> _config=linux-c-opt
+7,8c7,8
+< #"arch-linux2-cxx-debug" for some things, so the _config should be changed too
+< #_config=arch-linux2-cxx-debug
+---
+> #"linux-c-debug" for some things, so the _config should be changed too
+> #_config=linux-c-debug
 15a16,24
 > optdepends=('trilinos: support for trilinos'
 >     'ptscotch: support for ptscotch parallel graph partitioning library'
@@ -19,7 +29,9 @@
 > source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz test_optdepends.sh)
 > md5sums=('28f842697159e16e2978732480571147'
 >     '37877e593271bc43f975f92cba2f2d83')
-24a35,45
+20a31
+> petsc_arch="arch-${_config}"
+24a36,46
 > prepare() {
 > 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 > 
@@ -31,14 +43,14 @@
 > 	sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
 > }
 > 
-29d49
+29d50
 < 	#patch -Np1 -i ${startdir}/patch_debug.diff
-34,35c54
+34,35c55
 < 	find ${srcdir} -name "*" -type f -exec \
 < 	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
 ---
 > 	CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3"
-37,49c56,57
+37,49c57,58
 < 	CONFOPTS="--with-shared-libraries=1 --with-clanguage=C++ --COPTFLAGS=-O2 --CXXOPTFLAGS=-O2"
 < 
 < 	# External downloads
@@ -55,36 +67,41 @@
 ---
 >     # test for the optional dependencies for petsc
 >     CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
-52c60
+52c61
 < 	CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 ---
 > 	#CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
-53a62
+53a63
 >     echo ${CONFOPTS}
-55c64
+55,56c65,66
 < 		--prefix=${pkgdir}${_install_dir} \
+< 		--PETSC_ARCH=${_config} \
 ---
 > 		--prefix=${_install_dir} \
-61a71,77
+> 		--PETSC_ARCH=${petsc_arch} \
+59c69,76
+< 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} all
+---
+> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} all
+> }
+> 
 > check() {
 > 	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 > 	cd ${_build_dir}
 > 
 >     make test
-> }
-> 
-63a80,81
+63a81,82
 > 	_dest_dir="${pkgdir}${_install_dir}"
 > 
-65c83
+65c84
 < 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
 ---
-> 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install"
-67c85
+> 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} DESTDIR=${_dest_dir} install"
+67c86
 < 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
 ---
-> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} DESTDIR=${_dest_dir} install   # > /dev/null
-69,75c87,93
+> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} DESTDIR=${_dest_dir} install   # > /dev/null
+69,75c88,94
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/petscvariables"
