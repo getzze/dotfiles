@@ -41,7 +41,7 @@ fi
 # Add scotch support
 SCOTCH_DIR="/usr/include/scotch"
 if [ -d "${SCOTCH_DIR}" ]; then
-	SCOTCH_LIBS="/usr/lib/libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so"
+	SCOTCH_LIBS="libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so"
 	# Include bzip2 if scotch was build with bzip2 support
 	if [ -f /usr/include/bzlib.h ];then
 		SCOTCH_LIBS="${SCOTCH_LIBS},libbz2.so"
@@ -61,10 +61,10 @@ PASTIX_CONF=$(which pastix-conf)
 if [ -f "${PASTIX_CONF}" ]; then
 	PASTIX_DIR="$($PASTIX_CONF --incs | sed 's/-I//')"
 	if [ ! -d ${PASTIX_DIR} ]; then
-		PASTIX_DIR=""
+		PASTIX_DIR="[]"
 	fi
 	#PASTIX_LIBS="$($PASTIX_CONF --libs)"
-	PASTIX_LIBS="[/usr/lib/libpastix.a,librt.so,libhwloc.so,libpthread.a]"
+	PASTIX_LIBS="[libpastix.a,librt.so,libhwloc.so,libpthread.a]"
 	CONFOPTS="${CONFOPTS} --with-pastix=1 --with-pastix-lib=${PASTIX_LIBS} --with-pastix-include=${PASTIX_DIR}"
 fi
 
