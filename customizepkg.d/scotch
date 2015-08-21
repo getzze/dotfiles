@@ -1,0 +1,7 @@
+# Scotch scotch 6.0.4-1
+# https://aur.archlinux.org/packages/scotch/
+#
+# Patch the PKGBUILD to exclude the bzip2 library
+#
+
+patch#pkgbuild#file.patch

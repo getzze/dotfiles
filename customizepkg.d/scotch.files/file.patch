@@ -1,0 +1,9 @@
+11c11
+< depends=('zlib' 'openmpi' 'bzip2')
+---
+> depends=('zlib' 'openmpi')
+30,33d29
+<   # Also enable bzip2 compression
+<   sed -i "s/-DCOMMON_FILE_COMPRESS_GZ/-DCOMMON_FILE_COMPRESS_GZ -DCOMMON_FILE_COMPRESS_BZ2/" Makefile.inc
+<   sed -i "s/-lz/-lz -lbz2/" Makefile.inc
+<  
