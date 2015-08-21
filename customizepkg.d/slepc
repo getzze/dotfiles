@@ -2,3 +2,4 @@ replace#pkgver#3.5.3#3.6.0
 replace#md5sums#417a691e5a756ba2a6dde7f156ff57a5#560a634369fdab3fcaeea35c2cbab6f1
 replace#global#/conf/#/lib/slepc/conf/
 replace#global#/lib/modules/3.5.3#/lib/slepc/conf/modules/slepc/${pkgver}
+replace#global#_config=arch-linux2-cxx-opt#_config=linux-c-opt
