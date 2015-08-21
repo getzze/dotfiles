@@ -1,0 +1,16 @@
+4c4
+< pkgver=20140909
+---
+> pkgver=20150819
+42,44c42,44
+<     # for SLEPc 3.4.1
+<     sed -i 's/const EPSType eps_type = 0;/EPSType eps_type = 0;/' \
+< 	dolfin/la/SLEPcEigenSolver.cpp
+---
+>     ## for SLEPc 3.4.1
+>     #sed -i 's/const EPSType eps_type = 0;/EPSType eps_type = 0;/' \
+> 	#dolfin/la/SLEPcEigenSolver.cpp
+48a49,51
+> 
+>     # Include scotch libraries to pastix
+>     patch -p2 -i "${srcdir}/findpastix.patch"

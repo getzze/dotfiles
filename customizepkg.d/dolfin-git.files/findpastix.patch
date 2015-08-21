@@ -1,0 +1,27 @@
+*** src/dolfin/cmake/modules/FindPaStiX.cmake	2015-08-19 16:31:02.102419912 +0100
+--- src/dolfin/cmake/modules/FindPaStiX-patched.cmake	2015-08-19 18:38:01.789672157 +0100
+***************
+*** 53,58 ****
+--- 53,74 ----
+    set(PASTIX_LIBRARIES ${PASTIX_LIBRARIES} ${HWLOC_LIBRARY})
+  endif()
+  
++ # Check for scotch header
++ find_path(SCOTCH_INCLUDE_DIRS scotch.h
++   HINTS ${SCOTCH_DIR} $ENV{SCOTCH_DIR} ${SCOTCH_DIR}/include $ENV{SCOTCH_DIR}/include ${SCOTCH_DIR}/include/scotch
++   DOC "Directory where the scotch header is located"
++  )
++ 
++ # Check for scotch library
++ find_library(SCOTCH_LIBRARY scotch
++   HINTS ${SCOTCH_DIR} $ENV{SCOTCH_DIR} ${SCOTCH_DIR}/lib $ENV{SCOTCH_DIR}/lib
++   DOC "The scotch library"
++   )
++ 
++ if (SCOTCH_LIBRARY)
++   set(PASTIX_LIBRARIES ${PASTIX_LIBRARIES} ${SCOTCH_LIBRARY})
++ endif()
++ 
+  # Add BLAS libs if BLAS has been found
+  set(CMAKE_LIBRARY_PATH ${BLAS_DIR}/lib $ENV{BLAS_DIR}/lib ${CMAKE_LIBRARY_PATH})
+  find_package(BLAS)

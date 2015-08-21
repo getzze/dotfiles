@@ -1,0 +1,7 @@
+# Dolfin dolfin-git 20140909-1
+# https://aur.archlinux.org/packages/dolfin-git/
+#
+# Patch the FindPastix cmake function to include Scotch libs (included in Pastix compilation in Arch)
+#
+
+patch#pkgbuild#file.patch
