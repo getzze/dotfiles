@@ -177,7 +177,7 @@ EXTRALIB   := $(EXTRALIB) -L$(SCOTCH_LIB) -lptscotch -lscotch -lptscotcherrexit
 #else
 #EXTRALIB   := $(EXTRALIB) -L$(SCOTCH_LIB) -lptscotch -lptscotcherrexit
 #if scotch was built with bzip2 support
-EXTRALIB   := $(EXTRALIB) -lbz2
+#EXTRALIB   := $(EXTRALIB) -lbz2
 
 ###################################################################
 #                Portable Hardware Locality                       #

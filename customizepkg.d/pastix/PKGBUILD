@@ -3,17 +3,18 @@
 pkgname=pastix
 pkgver=5.2.2.22
 pkgrel=1
+_version_id=34974
 pkgdesc="high performance parallel solver for very large sparse linear systems based on direct methods."
 arch=('x86_64')
 url="http://pastix.gforge.inria.fr/"
 license=('CeCILL-C')
-depends=('scotch' 'hwloc')
+depends=('scotch' 'hwloc' 'blas')
 replaces=()
 conflicts=()
 provides=()
 options=('staticlibs')
-source=(https://gforge.inria.fr/frs/download.php/34974/${pkgname}_${pkgver}.tar.bz2 config.in)
-md5sums=('8733696b3cb91a7f0aa5b0d050a9f115' '547b1fb5ba88e5fe02e6ea0c99540218')
+source=(https://gforge.inria.fr/frs/download.php/${_version_id}/${pkgname}_${pkgver}.tar.bz2 config.in)
+md5sums=('8733696b3cb91a7f0aa5b0d050a9f115' 'd96d2211708eb3a23d0b9598b39ac566')
 
 _extractdir=${pkgname}_${pkgver}
 
