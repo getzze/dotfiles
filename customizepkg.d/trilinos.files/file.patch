@@ -1,0 +1,19 @@
+16,19c16
+< build() {
+<   #export CFLAGS="$CFLAGS -g -O1"
+<   #export CXXFLAGS="$CXXFLAGS -g -O1"
+< 
+---
+> prepare() {
+29a27,34
+> 
+> }
+> 
+> build() {
+>   #export CFLAGS="$CFLAGS -g -O1"
+>   #export CXXFLAGS="$CXXFLAGS -g -O1"
+>   cd "$srcdir/$pkgname-$pkgver-Source"
+> 
+36a42,43
+>       -DTrilinos_ENABLE_NOX=OFF \
+>       -DTrilinos_ENABLE_Anasazi=OFF \

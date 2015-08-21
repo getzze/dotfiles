@@ -1,0 +1,7 @@
+# Trilinos trilinos 12.0.1-3
+# https://aur.archlinux.org/packages/trilinos/
+#
+# Patch the PKGBUILD to build without NOX and Anasazi support
+#
+
+patch#pkgbuild#file.patch
