@@ -49,6 +49,6 @@ package() {
 
   install -m644 ${_build_dir}/src/hypre/include/*.h ${pkgdir}/usr/include
   install -m644 ${_build_dir}/src/hypre/lib/libHYPRE-${pkgver}.so ${pkgdir}/usr/lib
-  ln -s /usr/lib/libHYPRE-${pkgver}.so ${pkgdir}/usr/lib/libHYPRE.so
+  ln -s libHYPRE-${pkgver}.so ${pkgdir}/usr/lib/libHYPRE.so
 }
 
