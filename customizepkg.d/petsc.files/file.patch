@@ -28,7 +28,7 @@
 ---
 > source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz test_optdepends.sh)
 > md5sums=('28f842697159e16e2978732480571147'
->     '37877e593271bc43f975f92cba2f2d83')
+>     '4a82df77c43713f4bc698532db7ae02a')
 20a31
 > petsc_arch="arch-${_config}"
 24a36,46

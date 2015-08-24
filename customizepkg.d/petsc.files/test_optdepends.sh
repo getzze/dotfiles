@@ -9,6 +9,11 @@ CONFOPTS=""
 	#CONFOPTS="${CONFOPTS} --download-${external_pkg}=1"
 #done
 
+# Add hypre support
+if [ -f "/usr/lib/libHYPRE.so" ]; then
+	CONFOPTS="${CONFOPTS} --with-hypre=1"
+fi
+
 # Add mumps support
 if [ -f "/usr/lib/libmumps_common.so" ]; then
 	CONFOPTS="${CONFOPTS} --with-mumps=1"
