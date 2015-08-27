@@ -1,0 +1,46 @@
+3,5c3,5
+< pkgver=3.5.3
+< _config=arch-linux2-cxx-opt
+< pkgrel=2
+---
+> pkgver=3.6.0
+> _config=linux-c-opt
+> pkgrel=1
+13c13
+< md5sums=('417a691e5a756ba2a6dde7f156ff57a5')
+---
+> md5sums=('560a634369fdab3fcaeea35c2cbab6f1')
+29,30c29,30
+<     python2 ./configure --prefix=${pkgdir}${_install_dir}
+< #    export PETSC_ARCH=arch-installed-petsc
+---
+>     python2 ./configure --prefix=${_install_dir}
+> 
+33a34,39
+> check() {
+>  	_build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
+>  	cd ${_build_dir}
+>  
+>     make test
+> }
+40d45
+<  #   export PETSC_ARCH=arch-installed-petsc
+44c49
+<     make install > /dev/null # redirect in order to suppress confusing messages
+---
+>     make install SLEPC_DESTDIR=${pkgdir}${_install_dir} # redirect in order to suppress confusing messages
+49,52c54,57
+<     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/slepc_rules"
+<     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/slepc_variables"
+<     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/slepcvariables"
+<     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/uninstall.py"
+---
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_rules"
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_variables"
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepcvariables"
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/uninstall.py"
+54c59,60
+<     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/modules/3.5.3"
+---
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/modules/slepc/${pkgver}"
+>     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/include/slepcconf.h"
