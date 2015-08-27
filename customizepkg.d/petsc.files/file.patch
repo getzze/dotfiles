@@ -96,11 +96,11 @@
 65c84
 < 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install"
 ---
-> 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} DESTDIR=${_dest_dir} install"
+> 	echo "make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${_dest_dir} install"
 67c86
 < 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${_config} install # > /dev/null
 ---
-> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} PETSC_ARCH=${petsc_arch} DESTDIR=${_dest_dir} install   # > /dev/null
+> 	make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${_dest_dir} install   # > /dev/null
 69,75c88,94
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/PETSc.pc"
 < 	sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/conf/variables"
