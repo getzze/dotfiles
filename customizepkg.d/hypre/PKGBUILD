@@ -19,18 +19,20 @@ md5sums=('b0d876cb6958e024c24c05af1c257e24')
 build() {
   _build_dir="${srcdir}/${pkgname}-${pkgver}-${_suffix}"
   cd "${_build_dir}/src"
+  
 
-  CXXFLAGS='-O3 -fopenmp'
-  CFLAGS='-O3 -fopenmp'
-  MPI_FLAGS="--with-MPI --with-openmp --with-MPI-libs=gomp"
+  CFLAGS='-O3 -fopenmp -DMPIPP_H'
+  CXXFLAGS='-O3 -fopenmp -DMPIPP_H'
+  MPI_FLAGS=(--with-MPI --with-openmp --with-MPI-lib-dirs=/usr/lib/openmpi)
+  MPI_FLAGS+=(--with-MPI-libs="gomp mpi mpi_usempif08 mpi_usempi_ignore_tkr mpi_mpifh gfortran m quadmath pthread")
     
   # disable internal superlu and fei for now, not sure yet how to get it to use external superlu
   ./configure --prefix=/usr --enable-shared \
       --with-superlu --with-extra-incpath=/usr/include/superlu \
       --without-fei --without-babel \
       --with-blas=yes --with-lapack=yes \
-      ${MPI_FLAGS} \
-      CXXFLAGS="${CXXFLAGS}" CFLAGS="${CFLAGS}"
+      "${MPI_FLAGS[@]}" \
+      CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
   make
 }
 
