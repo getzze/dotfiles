@@ -1,0 +1,7 @@
+# MUMPS mumps 5.0.0-1
+# https://aur.archlinux.org/packages/mumps/
+#
+# Patch Makefile.inc to support the parallel verison of metis and scotch
+#
+
+patch#pkgbuild#file.patch
