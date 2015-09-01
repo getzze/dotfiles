@@ -1,19 +1,85 @@
-16,19c16
+10a11,17
+> optdepends=('hwloc: portable hardware locality (part of openmpi)'
+>         'parmetis: parallel graph partitioning'
+>         'scotch: parallel graph partitioning'
+>         'hdf5-openmpi: data file format'
+>         'suitesparse: sparse matrix solver'
+>         'scalapack: parallel lapack libraries'
+>         'superlu: linear algebra subroutines')
+16,19c23
 < build() {
 <   #export CFLAGS="$CFLAGS -g -O1"
 <   #export CXXFLAGS="$CXXFLAGS -g -O1"
 < 
 ---
 > prepare() {
-29a27,34
+29a34,41
 > 
 > }
 > 
 > build() {
->   #export CFLAGS="$CFLAGS -g -O1"
->   #export CXXFLAGS="$CXXFLAGS -g -O1"
+>   export CFLAGS="$CFLAGS -g -O1 -Wnarrowing"
+>   export CXXFLAGS="$CXXFLAGS -g -O1 -Wnarrowing"
 >   cd "$srcdir/$pkgname-$pkgver-Source"
 > 
-36a42,43
->       -DTrilinos_ENABLE_NOX=OFF \
->       -DTrilinos_ENABLE_Anasazi=OFF \
+31a44,65
+>   MODULES="-DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON -DTrilinos_ENABLE_TESTS=OFF -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES=ON "
+>   # Disable modules
+>   #for mod in FEI STKClassic Sundance NOX Anasazi AztecOO; do
+>   for mod in FEI STKClassic Sundance NOX Amesos2 MueLu; do
+>     MODULES+="-DTrilinos_ENABLE_${mod}=OFF "
+>   done
+>     
+>   TPL_MODULES=""
+>   # Enable third-party libraries (TPL)
+>   for tpl_mod in HWLOC METIS ParMETIS Zlib HDF5 UMFPACK SCALAPACK ; do
+>     TPL_MODULES+="-DTPL_ENABLE_${tpl_mod}=ON "
+>   done
+>   TPL_MODULES+="-DTPL_ENABLE_Scotch=ON -DTPL_Scotch_INCLUDE_DIRS=/usr/include/scotch "
+>   TPL_MODULES+="-DTPL_ENABLE_SuperLU=ON -DTPL_SuperLU_INCLUDE_DIRS=/usr/include/superlu "
+>   # Disable third-party libraries (TPL)
+>   for tpl_mod in Netcdf QT GLM; do
+>     TPL_MODULES+="-DTPL_ENABLE_${tpl_mod}=OFF "
+>   done
+>     
+>   #PY_TRILINOS="-DTrilinos_ENABLE_PyTrilinos:BOOL=ON"
+>   PY_TRILINOS="-DTrilinos_ENABLE_PyTrilinos:BOOL=OFF"
+> 
+33,41d66
+<       -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
+<       -DTrilinos_ENABLE_FEI=OFF \
+<       -DTrilinos_ENABLE_STKClassic=OFF \
+<       -DTrilinos_ENABLE_Sundance=OFF \
+<       -DTrilinos_ENABLE_TESTS=OFF \
+<       -DTrilinos_ENABLE_OpenMP:BOOL=ON \
+<       -DTPL_ENABLE_MPI:BOOL=ON \
+<       -DTrilinos_ENABLE_PyTrilinos:BOOL=ON \
+<       -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
+43,45c68,69
+<       -DTPL_ENABLE_Netcdf=OFF          \
+<       -DTPL_ENABLE_QT=OFF              \
+<       -DTPL_ENABLE_GLM=OFF              \
+---
+>       -DTrilinos_UNENABLE_ENABLED_PACKAGES=TRUE \
+>       -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
+46a71,78
+>       -DTrilinos_ENABLE_DEBUG:BOOL=ON \
+>       -DTrilinos_ENABLE_TESTS:BOOL=ON \
+>       -DTrilinos_ENABLE_CXX11:BOOL=ON \
+>       -DTrilinos_ENABLE_OpenMP:BOOL=ON \
+>       -DTPL_ENABLE_MPI:BOOL=ON \
+>       ${PY_TRILINOS} \
+>       ${MODULES} \
+>       ${TPL_MODULES} \
+52a85,89
+> check() {
+>     cd ${srcdir}/${pkgname}-${pkgver}-Source/build
+>     ctest -j4 -VV
+> }
+> 
+54,55c91,92
+<     cd $srcdir/$pkgname-$pkgver-Source/build
+<     make install DESTDIR=$pkgdir
+---
+>     cd ${srcdir}/${pkgname}-${pkgver}-Source/build
+>     make install DESTDIR=${pkgdir}
