@@ -1,0 +1,9 @@
+# python(2)-numpy-openblas
+# https://aur.archlinux.org/packages/python-numpy-openblas/
+#
+# Include suitsparse support
+#	modified site.cfg file
+
+add#depends#openblas
+add#depends#suitesparse
+patch#pkgbuild#file.patch
