@@ -1,5 +1,0 @@
-23a24,27
-> prepare() {
->   [[ -f site.cfg.new ]] && cp site.cfg.new site.cfg
-> }
-> 
