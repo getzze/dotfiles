@@ -1,0 +1,16 @@
+# Add the new keyboard layout to the file: 
+  sudo nano /usr/share/X11/xkb/rules/evdev.xml
+  
+# Look for "</layoutList>" and add the following xml block before:
+
+    <layout>
+      <configItem>
+        <name>int</name>
+        <shortDescription>int</shortDescription>
+        <description>English (International with accentuated characters)</description>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList/>
+    </layout>
