@@ -1,0 +1,1 @@
+replace#global#export LDFLAGS="$LDFLAGS -shared"#export LDFLAGS="$LDFLAGS -shared"\n  export OPENBLAS_NUM_THREADS=1#
