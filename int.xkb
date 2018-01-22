@@ -7,7 +7,7 @@
 // then load with, e.g.
 //
 //     setxkbmap int                            # defaults to US
-//     setxkbmap -layout int -variant carpalx   # to select other variants
+//     setxkbmap -layout int -variant colemak   # to select other variants
 //
 //
 // ┌────┐
@@ -35,7 +35,7 @@
 // ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹───────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┛
 //
 //
-// Carpalx variant qgmlwy
+// Colemak variant
 //
 // ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
 // │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % © │ ^ ^ │ & ̛ │ * ˛ │ ( ̣˘ │ ) ° │ _ ̣  │ + × ┃ ⌫ Back  ┃
@@ -128,7 +128,7 @@ default
 partial alphanumeric_keys
 xkb_symbols "colemak" {
 
-    name[Group1]= "International (Carplax qgmlwy: full optimization, Colemak lettermask, ZXCV like QWERTY)";
+    name[Group1]= "International (Colemak with dead keys)";
 
     include "us(basic)"
 
@@ -172,6 +172,7 @@ xkb_symbols "colemak" {
     key <AC10>	{ [        o,                 O,            oacute,                Oacute ]	};
     key <AC11>	{ [  apostrophe,       quotedbl,        dead_acute,        dead_diaeresis ] };
 
+    key <LSGT>	{ [     less,           greater,            endash,                emdash ]	};
     key <AB01>	{ [        z,                 Z,       acircumflex,           Acircumflex ]	};
     key <AB02>	{ [        x,                 X,                ae,                    AE ]	};
     key <AB03>	{ [        c,                 C,          ccedilla,              Ccedilla ]	};
@@ -183,6 +184,9 @@ xkb_symbols "colemak" {
     key <AB09>	{ [   period,           greater,     dead_abovedot,            dead_caron ] };
     key <AB10>	{ [    slash,          question,      questiondown,             dead_hook ] };
     key <BKSL>	{ [  backslash,             bar,           notsign,             brokenbar ] };
+
+    key <SPCE>	{ [    space,             space,      nobreakspace,          nobreakspace ] };
+    key <CAPS>	{ [  BackSpace,          Escape,         BackSpace,             BackSpace ] };
 
     include "level3(ralt_switch)"
 };
