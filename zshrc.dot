@@ -57,11 +57,11 @@ plugins=(git git-extras sudo command-not-found)
 
 # Completions
 #>> git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
-plugins=(... zsh-completions)
+plugins+=zsh-completions
 
 # Auto-suggestions
 #>> git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-plugins=(... zsh-autosuggestions)
+plugins+=zsh-autosuggestions
 
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
 	history-search-forward
@@ -84,14 +84,14 @@ ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
 
 # Widgets that accept the suggestion as far as the cursor moves
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
-#	forward-char
+	forward-char
 #	forward-word
 )
 
 # Last operations
 # * Zsh-Highlight
 #>> git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-plugins=(... zsh-syntax-highlighting)
+plugins+=zsh-syntax-highlighting
 
 # Import oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
