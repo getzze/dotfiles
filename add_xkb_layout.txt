@@ -7,10 +7,29 @@
       <configItem>
         <name>int</name>
         <shortDescription>int</shortDescription>
-        <description>English (International with accentuated characters)</description>
+        <description>International (qwerty)</description>
         <languageList>
           <iso639Id>eng</iso639Id>
+          <iso639Id>spa</iso639Id>
+          <iso639Id>ger</iso639Id>
+          <iso639Id>fra</iso639Id>
         </languageList>
       </configItem>
-      <variantList/>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>colemak</name>
+            <description>International (Colemak)</description>
+            <languageList>
+              <iso639Id>eng</iso639Id>
+              <iso639Id>spa</iso639Id>
+              <iso639Id>ger</iso639Id>
+              <iso639Id>fra</iso639Id>
+            </languageList>
+          </configItem>
+        </variant>
+      </variantList>
     </layout>
+
+# Set the keyboard
+  setxkbmap int -variant colemak
