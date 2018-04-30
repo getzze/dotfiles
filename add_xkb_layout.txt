@@ -1,3 +1,12 @@
+## Automatic way (pacman hook)
+# Add a pacman hook for the xkeyboard-config package
+  sudo cp add_keyboard.hook /etc/pacman.d/hooks/
+  sudo mkdir /etc/pacman.d/hooks.bin/
+  sudo cp add_xkb_layout.sh /etc/pacman.d/hooks.bin/
+  sudo chmod +x /etc/pacman.d/hooks.bin/add_xkb_layout.sh
+
+
+## Manual way (text editor)
 # Add the new keyboard layout to the file: 
   sudo nano /usr/share/X11/xkb/rules/evdev.xml
   

@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = File
+Target = usr/share/X11/xkb/rules/evdev.xml
+
+[Action]
+Description = Add custom keyboard to xkb evdev.xml...
+When = PostTransaction
+Depends = xmlstarlet
+Exec = /bin/bash -c 'while read -r f; do /etc/pacman.d/hooks.bin/add_xkb_layout.sh $f; done'
+NeedsTargets
