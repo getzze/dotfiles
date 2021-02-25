@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=5000
@@ -9,23 +16,30 @@ bindkey -e
 zstyle :compinstall filename '~/.zshrc'
 # End of lines added by compinstall
 
-# * Configuration and theme.
+# Do not store commands starting with space into history
+setopt HIST_IGNORE_SPACE
 
-# ** theme 
-# Before, install patched powerline (https://github.com/powerline/powerline). Follow installation instruction on the site
-if [[ $TERM == "rxvt-unicode-256color" ]]; then
-  ZSH_THEME=kolo
-elif [[ $TERM == "xterm" || $TERM == "xterm-256color" ]]; then
-  ZSH_THEME=agnoster
-else
-  ZSH_THEME=kolo
-fi
+# * Configuration and theme.
 
 # Enable completion for new installed command within the session by
 # not trust the zsh's cache of executable command, and forced it be
 # updated
 zstyle ":completion:*:commands" rehash 1
 autoload -U compinit && compinit
+
+# ** theme 
+## Before, install patched powerline (https://github.com/powerline/powerline). Follow installation instruction on the site
+#if [[ $TERM == "rxvt-unicode-256color" ]]; then
+#  ZSH_THEME=kolo
+#elif [[ $TERM == "xterm" || $TERM == "xterm-256color" || $TERM == "xterm-kitty" ]]; then
+#  ZSH_THEME=agnoster
+#  if [[ $TERM == "xterm-kitty" ]]; then
+#    # Completion for kitty
+#    kitty + complete setup zsh | source /dev/stdin
+#  fi
+#else
+#  ZSH_THEME=kolo
+#fi
 
 #Alias
 alias nano='nano -w'
@@ -53,7 +67,11 @@ zle -N down-line-or-beginning-search
 bindkey '^U' backward-kill-line
 
 # ** plugins
-plugins=(git git-extras sudo command-not-found)
+plugins=(git git-extras mercurial sudo command-not-found)
+
+# Pipenv
+#>> git clone https://github.com/owenstranathan/pipenv.zsh $ZSH_CUSTOM/plugins/pipenv
+plugins+=pipenv
 
 # Completions
 #>> git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
@@ -100,3 +118,19 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 
 # Set keyboard layout
 #setxkbmap int -variant colemak
+
+# pip completion
+eval "`pip completion --zsh`"
+
+# load broot console filemanager
+source /home/bertrand/.config/broot/launcher/bash/br
+
+# load Powerlevel10k
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ $TERM == "xterm" || $TERM == "xterm-256color" || $TERM == "xterm-kitty" ]]; then
+  [[ ! -f ~/.p10k-xterm.zsh ]] || source ~/.p10k-xterm.zsh
+else
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
