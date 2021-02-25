@@ -18,17 +18,17 @@
 // US variant
 //
 // ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
-// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % © │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ̣  │ + × ┃ ⌫ Back  ┃
+// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % ˇ │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ± │ + × ┃ ⌫ Back  ┃
 // │ ` ` │ 1 ¹ │ 2 ² │ 3 ³ │ 4 ¤ │ 5 € │ 6 ¼ │ 7 ½ │ 8 ¾ │ 9 ‘ │ 0 ’ │ - ÷ │ = ≈ ┃  space  ┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
 // ┃       ┃ Q Ä │ W À │ E É │ R ¥ │ T Þ │ Y Ü │ U Ú │ I Í │ O Ó │ P Ê │ { “ │ } ” │  | ¦  ┃
-// ┃Tab ↹  ┃ q ä │ w à │ e é │ r ∆ │ t þ │ y ü │ u ú │ i í │ o ó │ p ê │ [ « │ ] » │  \ ¬  ┃
+// ┃Tab ↹  ┃ q ä │ w à │ e é │ r √ │ t þ │ y ü │ u ú │ i í │ o ó │ p ê │ [ « │ ] » │  \ ¬  ┃
 // ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┫
 // ┃        ┃ A Á │ S § │ D Ð │ F È │ G Ö │ H Ħ │ J İ │ K Œ │ L Ł │ : ° │ " ” ┃    Enter   ┃
 // ┃Caps ⇬  ┃ a á │ s ß │ d ð │ f è │ g ö │ h ħ │ j ı │ k œ │ l ł │ ; ¶ │ ' ’ ┃      ⏎     ┃ 
 // ┣━━━━━━━━┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┻━━━━━━━━━━━━┫
-// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ N Ñ │ M Ω │ < ¯ │ > ˇ │ ? ̉  ┃             ┃
-// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ n ñ │ m µ │ , ¸ │ . ˙ │ / ¿ ┃Shift ⇧      ┃
+// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ N Ñ │ M Ω │ < ¯ │ > ˙ │ ? ̉  ┃             ┃
+// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ n ñ │ m µ │ , ¸ │ . ̣  │ / ¿ ┃Shift ⇧      ┃
 // ┣━━━━━━━┳━━━━━┷━┳━━━┷━━━┱─┴─────┴─────┴─────┴─────┴─────┴───┲━┷━━━━━╈━━━━━┻━┳━━━━━━━┳━━━┛
 // ┃       ┃       ┃       ┃ ␣                               ⍽ ┃       ┃       ┃       ┃
 // ┃Ctrl   ┃Super  ┃Alt    ┃ ␣           Space               ⍽ ┃AltGr ⇮┃Menu   ┃Ctrl   ┃
@@ -38,17 +38,17 @@
 // Colemak variant
 //
 // ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
-// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % © │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ̣  │ + × ┃ ⌫ Back  ┃
+// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % ˇ │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ± │ + × ┃ ⌫ Back  ┃
 // │ ` ` │ 1 ¹ │ 2 ² │ 3 ³ │ 4 ¤ │ 5 € │ 6 ¼ │ 7 ½ │ 8 ¾ │ 9 ‘ │ 0 ’ │ - ÷ │ = ≈ ┃  space  ┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
 // ┃       ┃ Q Ä │ W À │ F È │ P Ê │ G Ö │ J İ │ L Ł │ U Ú │ Y Ü │ : ° │ { “ │ } ” │  | ¦  ┃
 // ┃Tab ↹  ┃ q ä │ w à │ f è │ p ê │ g ö │ j ı │ l ł │ u ú │ y ü │ ; ¶ │ [ « │ ] » │  \ ¬  ┃
 // ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┫
 // ┃        ┃ A Á │ R ¥ │ S § │ T Þ │ D Ð │ H Ħ │ N Ñ │ E É │ I Í │ O Ó │ " ” ┃    Enter   ┃
-// ┃Caps ⇬  ┃ a á │ r ∆ │ s ß │ t þ │ d ð │ h ħ │ n ñ │ e é │ i í │ o ó │ ' ’ ┃      ⏎     ┃ 
+// ┃Caps ⇬  ┃ a á │ r √ │ s ß │ t þ │ d ð │ h ħ │ n ñ │ e é │ i í │ o ó │ ' ’ ┃      ⏎     ┃ 
 // ┣━━━━━━━━┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┻━━━━━━━━━━━━┫
-// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ K Œ │ M Ω │ < ¯ │ > ˇ │ ? ̉  ┃             ┃
-// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ k œ │ m µ │ , ¸ │ . ˙ │ / ¿ ┃Shift ⇧      ┃
+// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ K Œ │ M Ω │ < ¯ │ > ˙ │ ? ̉  ┃             ┃
+// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ k œ │ m µ │ , ¸ │ . ̣  │ / ¿ ┃Shift ⇧      ┃
 // ┣━━━━━━━┳━━━━━┷━┳━━━┷━━━┱─┴─────┴─────┴─────┴─────┴─────┴───┲━┷━━━━━╈━━━━━┻━┳━━━━━━━┳━━━┛
 // ┃       ┃       ┃       ┃ ␣                               ⍽ ┃       ┃       ┃       ┃
 // ┃Ctrl   ┃Super  ┃Alt    ┃ ␣           Space               ⍽ ┃AltGr ⇮┃Menu   ┃Ctrl   ┃
@@ -85,7 +85,7 @@ xkb_symbols "basic" {
     key <AD01> { [	   q,          Q,    adiaeresis,       Adiaeresis ] };
     key <AD02> { [	   w,          W,        agrave,           Agrave ] };
     key <AD03> { [	   e,          E,        eacute,           Eacute ] };
-    key <AC05> { [	   r,          R,         U2206,              yen ] };
+    key <AC05> { [	   r,          R,         U221a,              yen ] };
     key <AD05> { [	   t,          T,         thorn,            THORN ] };
     key <AD06> { [	   y,          Y,    udiaeresis,       Udiaeresis ] };
     key <AD07> { [	   u,          U,        uacute,           Uacute ] };
@@ -113,7 +113,7 @@ xkb_symbols "basic" {
     key <AB04> { [	   v,          V,        ugrave,           Ugrave ] };
     key <AB05> { [	   b,          B,        oslash,         Ooblique ] };
     key <AB06> { [	   n,          N,        ntilde,           Ntilde ] };
-    key <AB07> { [	   m,          M,            mu,      Greek_OMEGA ] };
+    key <AB07> { [	   m,          M,    dead_greek,      Greek_OMEGA ] };
     key <AB08> { [     comma,       less,  dead_cedilla,      dead_macron ] };
     key <AB09> { [    period,    greater, dead_belowdot,    dead_abovedot ] };
     key <AB10> { [     slash,   question,  questiondown,        dead_hook ] };
@@ -161,7 +161,7 @@ xkb_symbols "colemak" {
     key <AD12>	{ [ bracketright,    braceright,    guillemotright,  rightdoublequotemark ] };
 
     key <AC01>	{ [        a,                 A,            aacute,                Aacute ]	};
-    key <AC02>	{ [        r,                 R,             U2206,                   yen ]	};
+    key <AC02>	{ [        r,                 R,             U221a,                   yen ]	};
     key <AC03>	{ [        s,                 S,            ssharp,               section ]	};
     key <AC04>	{ [        t,                 T,             thorn,                 THORN ]	};
     key <AC05>	{ [        d,                 D,               eth,                   ETH ]	};
@@ -179,7 +179,7 @@ xkb_symbols "colemak" {
     key <AB04>	{ [        v,                 V,            ugrave,                Ugrave ]	};
     key <AB05>	{ [        b,                 B,            oslash,              Ooblique ] };
     key <AB06>	{ [        k,                 K,                oe,                    OE ]	};
-    key <AB07>	{ [        m,                 M,                mu,           Greek_OMEGA ]	};
+    key <AB07>	{ [        m,                 M,        dead_greek,           Greek_OMEGA ]	};
     key <AB08>	{ [    comma,              less,      dead_cedilla,           dead_macron ] };
     key <AB09>	{ [   period,           greater,     dead_belowdot,         dead_abovedot ] };
     key <AB10>	{ [    slash,          question,      questiondown,             dead_hook ] };
