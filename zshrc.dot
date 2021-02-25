@@ -47,7 +47,7 @@ alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
-
+alias diff='diff --color=auto'
 
 # ** prefix prompt
 DEFAULT_USER=$USER
