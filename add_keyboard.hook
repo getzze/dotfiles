@@ -1,7 +1,7 @@
 [Trigger]
 Operation = Upgrade
 Operation = Install
-Type = File
+Type = Path
 Target = usr/share/X11/xkb/rules/evdev.xml
 
 [Action]
