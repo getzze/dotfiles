@@ -27,7 +27,7 @@ setopt HIST_IGNORE_SPACE
 zstyle ":completion:*:commands" rehash 1
 autoload -U compinit && compinit
 
-# ** theme 
+# ** theme
 ## Before, install patched powerline (https://github.com/powerline/powerline). Follow installation instruction on the site
 #if [[ $TERM == "rxvt-unicode-256color" ]]; then
 #  ZSH_THEME=kolo
@@ -101,7 +101,7 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
 	history-search-forward
 	history-search-backward
 	up-line-or-beginning-search
-	down-line-or-beginning-search	
+	down-line-or-beginning-search
 	history-beginning-search-forward
 	history-beginning-search-backward
 	history-substring-search-up
@@ -128,7 +128,7 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 eval "`pip completion --zsh`"
 
 # load broot console filemanager
-source /home/bertrand/.config/broot/launcher/bash/br
+source ~/.config/broot/launcher/bash/br
 
 # load Powerlevel10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
