@@ -72,11 +72,11 @@ zle -N down-line-or-beginning-search
 bindkey '^U' backward-kill-line
 
 # ** plugins
-plugins=(git git-extras mercurial sudo command-not-found)
+plugins=(git git-extras mercurial sudo command-not-found virtualenv)
 
 # Pipenv
 #>> git clone https://github.com/owenstranathan/pipenv.zsh $ZSH_CUSTOM/plugins/pipenv
-plugins+=pipenv
+#plugins+=pipenv
 
 # Completions
 #>> git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
