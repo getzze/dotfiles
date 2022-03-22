@@ -143,20 +143,31 @@ else
 fi
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
-## >>> conda initialize >>>
-## !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/opt/miniconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/opt/miniconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
+start_conda () {
+    __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/opt/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=anaconda
+    # see ~/.p10k.zsh for how to change the anaconda prompt segment
+    # modify POWERLEVEL9K_ANACONDA_CONTENT_EXPANSION to:
+    # POWERLEVEL9K_ANACONDA_CONTENT_EXPANSION='${${${${CONDA_PROMPT_MODIFIER#\(}% }%\)}:-${CONDA_PREFIX:t}} : v${P9K_ANACONDA_PYTHON_VERSION}'
+}
 
-POWERLEVEL9K_ANACONDA_SHOW_PYTHON_VERSION=false
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=anaconda
+stop_conda () {
+    # Remove any path starting with '/opt/miniconda3/' from PATH
+    conda deactivate
+    export PATH=$( python -c "import os; path = os.environ['PATH'].split(':'); print(':'.join(p for p in path if '/opt/miniconda3/' not in p))" )
+#    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/anaconda}")
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
 # <<< conda initialize <<<
