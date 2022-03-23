@@ -164,6 +164,7 @@ start_conda () {
 stop_conda () {
     # Remove any path starting with '/opt/miniconda3/' from PATH
     conda deactivate
+    conda deactivate
     export PATH=$( python -c "import os; path = os.environ['PATH'].split(':'); print(':'.join(p for p in path if '/opt/miniconda3/' not in p))" )
 #    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/anaconda}")
 }
