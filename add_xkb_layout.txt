@@ -1,0 +1,44 @@
+## Automatic way (pacman hook)
+# Add a pacman hook for the xkeyboard-config package
+  sudo cp add_keyboard.hook /etc/pacman.d/hooks/
+  sudo mkdir /etc/pacman.d/hooks.bin/
+  sudo cp add_xkb_layout.sh /etc/pacman.d/hooks.bin/
+  sudo chmod +x /etc/pacman.d/hooks.bin/add_xkb_layout.sh
+
+
+## Manual way (text editor)
+# Add the new keyboard layout to the file: 
+  sudo nano /usr/share/X11/xkb/rules/evdev.xml
+  
+# Look for "</layoutList>" and add the following xml block before:
+
+    <layout>
+      <configItem>
+        <name>int</name>
+        <shortDescription>int</shortDescription>
+        <description>International (qwerty)</description>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+          <iso639Id>spa</iso639Id>
+          <iso639Id>ger</iso639Id>
+          <iso639Id>fra</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>colemak</name>
+            <description>International (Colemak)</description>
+            <languageList>
+              <iso639Id>eng</iso639Id>
+              <iso639Id>spa</iso639Id>
+              <iso639Id>ger</iso639Id>
+              <iso639Id>fra</iso639Id>
+            </languageList>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+
+# Set the keyboard
+  setxkbmap int -variant colemak

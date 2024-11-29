@@ -1,0 +1,224 @@
+//  International layouts
+//	Version 20150811
+//
+// to use, copy to /usr/share/X11/xkb/symbols/int and add entries
+// to /usr/share/X11/xkb/rules/xorg.{lst,xml}
+//
+// then load with, e.g.
+//
+//     setxkbmap int                            # defaults to US
+//     setxkbmap -layout int -variant colemak   # to select other variants
+//
+//
+// ┌────┐
+// │ 2 4│   2 = Shift,  4 = AltGr + Shift
+// │ 1 3│   1 = Normal, 3 = AltGr
+// └────┘
+// 
+// US variant
+//
+// ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
+// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % ˇ │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ± │ + × ┃ ⌫ Back  ┃
+// │ ` ` │ 1 ¹ │ 2 ² │ 3 ³ │ 4 ¤ │ 5 € │ 6 ¼ │ 7 ½ │ 8 ¾ │ 9 ‘ │ 0 ’ │ - ÷ │ = ≈ ┃  space  ┃
+// ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
+// ┃       ┃ Q Ä │ W À │ E É │ R ∇ │ T Þ │ Y Ü │ U Ú │ I Í │ O Ó │ P Ê │ { “ │ } ” │  | ¦  ┃
+// ┃Tab ↹  ┃ q ä │ w à │ e é │ r √ │ t þ │ y ü │ u ú │ i í │ o ó │ p ê │ [ « │ ] » │  \ ¬  ┃
+// ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┫
+// ┃        ┃ A Á │ S § │ D Ð │ F È │ G Ö │ H Ħ │ J İ │ K Œ │ L Ł │ : ° │ " ” ┃    Enter   ┃
+// ┃Caps ⇬  ┃ a á │ s ß │ d ð │ f è │ g ö │ h ħ │ j ı │ k œ │ l ł │ ; ∘ │ ' ’ ┃      ⏎     ┃ 
+// ┣━━━━━━━━┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┻━━━━━━━━━━━━┫
+// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ N Ñ │ M Ω │ < ¯ │ > ˙ │ ? ̉  ┃             ┃
+// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ n ñ │ m µ │ , ¸ │ . ̣  │ / ¿ ┃Shift ⇧      ┃
+// ┣━━━━━━━┳━━━━━┷━┳━━━┷━━━┱─┴─────┴─────┴─────┴─────┴─────┴───┲━┷━━━━━╈━━━━━┻━┳━━━━━━━┳━━━┛
+// ┃       ┃       ┃       ┃ ␣                               ⍽ ┃       ┃       ┃       ┃
+// ┃Ctrl   ┃Super  ┃Alt    ┃ ␣           Space               ⍽ ┃AltGr ⇮┃Menu   ┃Ctrl   ┃
+// ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹───────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┛
+//
+//
+// Colemak variant
+//
+// ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
+// │ ~ ~ │ ! ¡ │ @ ˝ │ # ¢ │ $ £ │ % ˇ │ ^ ^ │ & ̛  │ * ˛ │ ( ̣˘ │ ) ° │ _ ± │ + × ┃ ⌫ Back  ┃
+// │ ` ` │ 1 ¹ │ 2 ² │ 3 ³ │ 4 ¤ │ 5 € │ 6 ¼ │ 7 ½ │ 8 ¾ │ 9 ‘ │ 0 ’ │ - ÷ │ = ≈ ┃  space  ┃
+// ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
+// ┃       ┃ Q Ä │ W À │ F È │ P Ê │ G Ö │ J İ │ L Ł │ U Ú │ Y Ü │ : ° │ { “ │ } ” │  | ¦  ┃
+// ┃Tab ↹  ┃ q ä │ w à │ f è │ p ê │ g ö │ j ı │ l ł │ u ú │ y ü │ ; ∘ │ [ « │ ] » │  \ ¬  ┃
+// ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┲━━━━┷━━━━━━━┫
+// ┃        ┃ A Á │ R ∇ │ S § │ T Þ │ D Ð │ H Ħ │ N Ñ │ E É │ I Í │ O Ó │ " ” ┃    Enter   ┃
+// ┃Caps ⇬  ┃ a á │ r √ │ s ß │ t þ │ d ð │ h ħ │ n ñ │ e é │ i í │ o ó │ ' ’ ┃      ⏎     ┃ 
+// ┣━━━━━━━━┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┻━━━━━━━━━━━━┫
+// ┃             │ Z Â │ X Æ │ C Ç │ V Ù │ B Ø │ K Œ │ M Ω │ < ¯ │ > ˙ │ ? ̉  ┃             ┃
+// ┃Shift ⇧      │ z â │ x æ │ c ç │ v ù │ b ø │ k œ │ m µ │ , ¸ │ . ̣  │ / ¿ ┃Shift ⇧      ┃
+// ┣━━━━━━━┳━━━━━┷━┳━━━┷━━━┱─┴─────┴─────┴─────┴─────┴─────┴───┲━┷━━━━━╈━━━━━┻━┳━━━━━━━┳━━━┛
+// ┃       ┃       ┃       ┃ ␣                               ⍽ ┃       ┃       ┃       ┃
+// ┃Ctrl   ┃Super  ┃Alt    ┃ ␣           Space               ⍽ ┃AltGr ⇮┃Menu   ┃Ctrl   ┃
+// ┗━━━━━━━┻━━━━━━━┻━━━━━━━┹───────────────────────────────────┺━━━━━━━┻━━━━━━━┻━━━━━━━┛
+//
+//
+//
+//
+//
+
+default
+partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    name[Group1]= "International (dead keys)";
+
+    include "us(basic)"
+
+    // Alphanumeric section
+    key <TLDE> { [      grave, asciitilde,         dead_grave,         dead_tilde ] };
+    key <AE01> { [          1,     exclam,        onesuperior,         exclamdown ] };
+    key <AE02> { [          2,         at,        twosuperior,   dead_doubleacute ] };
+    key <AE03> { [          3, numbersign,      threesuperior,               cent ] };
+    key <AE04> { [          4,     dollar,           currency,           sterling ] };
+    key <AE05> { [          5,    percent,           EuroSign,         dead_caron ] };
+    key <AE06> { [          6,asciicircum,         onequarter,    dead_circumflex ] };
+    key <AE07> { [          7,  ampersand,            onehalf,          dead_horn ] };
+    key <AE08> { [          8,   asterisk,      threequarters,        dead_ogonek ] };
+    key <AE09> { [          9,  parenleft,  leftsinglequotemark,       dead_breve ] };
+    key <AE10> { [          0, parenright, rightsinglequotemark,   dead_abovering ] };
+    key <AE11> { [      minus, underscore,           division,          plusminus ] };
+    key <AE12> { [      equal,       plus,              U2248,           multiply ] };
+
+    key <AD01> { [          q,          Q,         adiaeresis,         Adiaeresis ] };
+    key <AD02> { [          w,          W,             agrave,             Agrave ] };
+    key <AD03> { [          e,          E,             eacute,             Eacute ] };
+    key <AC05> { [          r,          R,              U221a,              U2207 ] };
+    key <AD05> { [          t,          T,              thorn,              THORN ] };
+    key <AD06> { [          y,          Y,         udiaeresis,         Udiaeresis ] };
+    key <AD07> { [          u,          U,             uacute,             Uacute ] };
+    key <AD08> { [          i,          I,             iacute,             Iacute ] };
+    key <AD09> { [          o,          O,             oacute,             Oacute ] };
+    key <AD10> { [          p,          P,        ecircumflex,        Ecircumflex ] };
+    key <AD11> { [  bracketleft,  braceleft,  guillemotleft,  leftdoublequotemark ] };
+    key <AD12> { [ bracketright, braceright, guillemotright, rightdoublequotemark ] };
+
+    key <AC01> { [          a,          A,             aacute,             Aacute ] };
+    key <AC02> { [          s,          S,             ssharp,            section ] };
+    key <AC03> { [          d,          D,                eth,                ETH ] };
+    key <AC04> { [          f,          F,             egrave,             Egrave ] };
+    key <AC05> { [          g,          G,         odiaeresis,         Odiaeresis ] };
+    key <AC06> { [          h,          H,            hstroke,            Hstroke ] };
+    key <AC07> { [          j,          J,           idotless,          Iabovedot ] };
+    key <AC08> { [          k,          K,                 oe,                 OE ] };
+    key <AC09> { [          l,          L,            lstroke,            Lstroke ] };
+    key <AC10> { [  semicolon,      colon,              U2218,             degree ] };
+    key <AC11> { [ apostrophe,   quotedbl,         dead_acute,     dead_diaeresis ] };
+
+    key <AB01> { [          z,          Z,        acircumflex,        Acircumflex ] };
+    key <AB02> { [          x,          X,                 ae,                 AE ] };
+    key <AB03> { [          c,          C,           ccedilla,           Ccedilla ] };
+    key <AB04> { [          v,          V,             ugrave,             Ugrave ] };
+    key <AB05> { [          b,          B,             oslash,           Ooblique ] };
+    key <AB06> { [          n,          N,             ntilde,             Ntilde ] };
+    key <AB07> { [          m,          M,         dead_greek,        Greek_OMEGA ] };
+    key <AB08> { [      comma,       less,       dead_cedilla,        dead_macron ] };
+    key <AB09> { [     period,    greater,      dead_belowdot,      dead_abovedot ] };
+    key <AB10> { [      slash,   question,       questiondown,          dead_hook ] };
+
+    key <LSGT> { [ dead_grave, dead_tilde,              grave,         asciitilde ] };
+    key <BKSL> { [  backslash,        bar,            notsign,          brokenbar ] };
+
+    include "level3(ralt_switch)"
+};
+
+default
+partial alphanumeric_keys
+xkb_symbols "colemak" {
+
+    name[Group1]= "International (Colemak with dead keys)";
+
+    include "us(basic)"
+
+    // Alphanumeric section
+    key <TLDE>	{ [         grave,    asciitilde,           dead_grave,           dead_tilde ] };
+    key <AE01>	{ [             1,        exclam,          onesuperior,          exclamdown  ] };
+    key <AE02>	{ [             2,            at,          twosuperior,     dead_doubleacute ] };
+    key <AE03>	{ [             3,    numbersign,        threesuperior,                 cent ] };
+    key <AE04>	{ [             4,        dollar,             currency,             sterling ] };
+    key <AE05>	{ [             5,       percent,             EuroSign,           dead_caron ] };
+    key <AE06>	{ [             6,   asciicircum,           onequarter,      dead_circumflex ] };
+    key <AE07>	{ [             7,     ampersand,              onehalf,            dead_horn ] };
+    key <AE08>	{ [             8,      asterisk,        threequarters,          dead_ogonek ] };
+    key <AE09>	{ [             9,     parenleft,  leftsinglequotemark,           dead_breve ] };
+    key <AE10>	{ [             0,    parenright, rightsinglequotemark,       dead_abovering ] };
+    key <AE11>	{ [         minus,    underscore,             division,            plusminus ] };
+    key <AE12>	{ [         equal,          plus,                U2248,             multiply ] };
+
+    key <AD01>	{ [             q,             Q,           adiaeresis,           Adiaeresis ] };
+    key <AD02>	{ [             w,             W,               agrave,               Agrave ] };
+    key <AD03>	{ [             f,             F,               egrave,               Egrave ] };
+    key <AD04>	{ [             p,             P,          ecircumflex,          Ecircumflex ] };
+    key <AD05>	{ [             g,             G,           odiaeresis,           Odiaeresis ] };
+    key <AD06>	{ [             j,             J,             idotless,            Iabovedot ] };
+    key <AD07>	{ [             l,             L,              lstroke,              Lstroke ] };
+    key <AD08>	{ [             u,             U,               uacute,               Uacute ] };
+    key <AD09>	{ [             y,             Y,           udiaeresis,           Udiaeresis ] };
+    key <AD10>	{ [     semicolon,         colon,                U2218,               degree ] };
+    key <AD11>	{ [   bracketleft,     braceleft,        guillemotleft,  leftdoublequotemark ] };
+    key <AD12>	{ [  bracketright,    braceright,       guillemotright, rightdoublequotemark ] };
+
+    key <AC01>	{ [             a,             A,               aacute,               Aacute ] };
+    key <AC02>	{ [             r,             R,                U221a,                U2207 ] };
+    key <AC03>	{ [             s,             S,               ssharp,              section ] };
+    key <AC04>	{ [             t,             T,                thorn,                THORN ] };
+    key <AC05>	{ [             d,             D,                  eth,                  ETH ] };
+    key <AC06>	{ [             h,             H,              hstroke,              Hstroke ] };
+    key <AC07>	{ [             n,             N,               ntilde,               Ntilde ] };
+    key <AC08>	{ [             e,             E,               eacute,               Eacute ] };
+    key <AC09>	{ [             i,             I,               iacute,               Iacute ] };
+    key <AC10>	{ [             o,             O,               oacute,               Oacute ] };
+    key <AC11>	{ [    apostrophe,      quotedbl,           dead_acute,       dead_diaeresis ] };
+
+    key <LSGT>	{ [          less,       greater,               endash,               emdash ] };
+    key <AB01>	{ [             z,             Z,          acircumflex,          Acircumflex ] };
+    key <AB02>	{ [             x,             X,                   ae,                   AE ] };
+    key <AB03>	{ [             c,             C,             ccedilla,             Ccedilla ] };
+    key <AB04>	{ [             v,             V,               ugrave,               Ugrave ] };
+    key <AB05>	{ [             b,             B,               oslash,             Ooblique ] };
+    key <AB06>	{ [             k,             K,                   oe,                   OE ] };
+    key <AB07>	{ [             m,             M,           dead_greek,          Greek_OMEGA ] };
+    key <AB08>	{ [         comma,          less,         dead_cedilla,          dead_macron ] };
+    key <AB09>	{ [        period,       greater,        dead_belowdot,        dead_abovedot ] };
+    key <AB10>	{ [         slash,      question,         questiondown,            dead_hook ] };
+
+    key <BKSL>	{ [     backslash,           bar,              notsign,            brokenbar ] };
+    key <LSGT>  { [    dead_grave,    dead_tilde,                grave,           asciitilde ] };
+
+    key <SPCE>	{ [         space,         space,         nobreakspace,         nobreakspace ] };
+    key <CAPS>	{ [     BackSpace,     BackSpace,               Escape,               Escape ] };
+
+    include "level3(ralt_switch)"
+};
+
+
+
+// Based on symbols/us_intl keyboard map:
+// Dead-keys definition for a very simple US/ASCII layout.
+// by Conectiva (http://www.conectiva.com.br)
+// modified by Ricardo Y. Igarashi (iga@that.com.br)
+
+// Added the following deadkeys, to make it truly international:
+//
+// dead_macron: on AltGr-Shift-comma
+// dead_breve: on AltGr-Shift-parenleft
+// dead_abovedot: on AltGr-Shift-period
+// dead_abovering: on AltGr-Shift-parenright
+// dead_doubleacute: on AltGr-Shift-2
+// dead_caron: on AltGr-Shift-5
+// dead_cedilla: on AltGr-comma
+// dead_ogonek: on AltGr-Shift-8
+// dead_belowdot: on AltGr-period
+// dead_hook: on AltGr-question (AltGr-Shift-slash)
+// dead_horn: on AltGr-Shift-7
+// dead_diaeresis: on AltGr-colon (Alt-shift-semicolon)
+//
+// those were already there:
+// dead_grave: on AltGr-grave
+// dead_acute: on AltGr-apostrophe
+// dead_circumflex: on AltGr-Shift-6
+// dead_tilde: on AltGr-tilde (AltGr-Shift-grave)
+// dead_diaeresis: on AltGr-quotedbl (AltGr-Shift-apostrophe)
+
