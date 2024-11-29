@@ -169,7 +169,13 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Conda init
-CONDA_INSTALL_DIR="/opt/miniconda3"
+if [ -f /opt/miniconda3 ]; then
+    CONDA_INSTALL_DIR="/opt/miniconda3"
+elif [ -f ~/miniforge3 ]; then
+    CONDA_INSTALL_DIR="~/miniforge3"
+elif [ -f ~/miniconda3 ]; then
+    CONDA_INSTALL_DIR="~/miniconda3"
+fi
 
 start_conda () {
     __conda_setup="$(\"$CONDA_INSTALL_DIR/bin/conda\" 'shell.zsh' 'hook' 2> /dev/null)"
