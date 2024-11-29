@@ -144,9 +144,6 @@ bindkey '^s' fzf_history_search
 # "sharkdp/fd" file finder, modern replacement for GNU find
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
 
-# load broot console filemanager
-source ~/.config/broot/launcher/bash/br
-
 # load Powerlevel10k
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme
@@ -207,3 +204,6 @@ stop_conda () {
 # !! Contents within this block are managed by 'conda init' !!
 # <<< conda initialize <<<
 
+# Should be the last lines, otherwise it is readded by broot:
+# load broot console filemanager
+source ~/.config/broot/launcher/bash/br
