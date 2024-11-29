@@ -167,15 +167,18 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# Conda init
+CONDA_INSTALL_DIR="/opt/miniconda3"
+
 start_conda () {
-    __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$(\"$CONDA_INSTALL_DIR/bin/conda\" 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/opt/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "$CONDA_INSTALL_DIR/etc/profile.d/conda.sh" ]; then
+            . "$CONDA_INSTALL_DIR/etc/profile.d/conda.sh"
         else
-            export PATH="/opt/miniconda3/bin:$PATH"
+            export PATH="$CONDA_INSTALL_DIR/bin:$PATH"
         fi
     fi
     unset __conda_setup
@@ -186,10 +189,10 @@ start_conda () {
 }
 
 stop_conda () {
-    # Remove any path starting with '/opt/miniconda3/' from PATH
+    # Remove any path starting with "${CONDA_INSTALL_DIR}" from PATH
     conda deactivate
     conda deactivate
-    export PATH=$( python -c "import os; path = os.environ['PATH'].split(':'); print(':'.join(p for p in path if '/opt/miniconda3/' not in p))" )
+    export PATH=$( python -c "import os; path = os.environ['PATH'].split(':'); print(':'.join(p for p in path if "$CONDA_INSTALL_DIR" not in p))" )
 #    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/anaconda}")
 }
 
