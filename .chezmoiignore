@@ -7,4 +7,5 @@ add_keyboard.hook
 # compiled
 *.zwc
 
-
+# cache
+.oh-my-zsh/cache/*
