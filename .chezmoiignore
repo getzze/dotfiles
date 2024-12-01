@@ -3,3 +3,8 @@ int.xkb
 add_xkb_layout.txt
 add_xkb_layout.sh
 add_keyboard.hook
+
+# compiled
+*.zwc
+
+
