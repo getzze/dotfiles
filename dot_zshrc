@@ -203,7 +203,3 @@ stop_conda () {
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # <<< conda initialize <<<
-
-# Should be the last lines, otherwise it is readded by broot:
-# load broot console filemanager
-source ~/.config/broot/launcher/bash/br
