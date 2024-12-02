@@ -1,17 +1,17 @@
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 #!/bin/sh
 
-sudo pacman -S zsh ripgrep fzf fd git-delta lsd yazi repgrep
+sudo pacman -S zsh ripgrep fzf lsd fd bat git-delta yazi repgrep
 
 {{ else if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
 #!/bin/sh
 
-sudo apt install zsh ripgrep fzf rust-fd-find
+sudo apt install zsh ripgrep fzf
 
 {{ if and (eq .chezmoi.osRelease.id "debian") (le (int .chezmoi.osRelease.versionID) 11) -}}
-echo "Manually install: lsd"
+echo "Manually install: lsd, rust-fd-find, rust-bat"
 {{ else -}}
-sudo apt install lsd
+sudo apt install lsd, rust-fd-find, rust-bat
 {{ end -}}
 
 echo "Manually install: git-delta, yazi, repgrep"
