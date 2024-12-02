@@ -1,11 +1,13 @@
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 #!/bin/sh
 
-sudo pacman -S zsh ripgrep fzf lsd broot yazi
+sudo pacman -S zsh ripgrep fzf lsd yazi
 
 {{ else if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
 #!/bin/sh
 
-sudo apt install zsh ripgrep fzf lsd
-
+sudo apt install zsh ripgrep fzf
+{{ if not ((eq .chezmoi.osRelease.id "debian") and (le .chezmoi.osRelease.versionId 11)) -}}
+sudo apt install lsd
+{{ end -}}
 {{ end -}}
