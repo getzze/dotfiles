@@ -127,9 +127,17 @@ bindkey '^s' fzf_history_search
 # Set keyboard layout
 #setxkbmap int -variant colemak
 
-# pip completion
-# RUN ONCE:
-#mkdir -p "$HOME/.oh-my-zsh/completions"; python -m pip completion --zsh | tail -n+3 | tee "$HOME/.oh-my-zsh/completions/_pip"
+# pip completion, if not installed globally
+if [[ ! -f /usr/share/zsh/site-functions/_pip && ! -f "$HOME/.oh-my-zsh/custom/completions/_pip" ]]; then
+    mkdir -p "$HOME/.oh-my-zsh/custom/completions"
+    python -m pip completion --zsh | tail -n+3 | tee "$HOME/.oh-my-zsh/custom/completions/_pip"
+fi
+
+# chezmoi completion, if not installed globally
+if [[ ! -f /usr/share/zsh/site-functions/_chezmoi && ! -f "$HOME/.oh-my-zsh/custom/completions/_chezmoi" ]]; then
+    mkdir -p "$HOME/.oh-my-zsh/custom/completions"
+    chezmoi completion zsh --output="$HOME/.oh-my-zsh/custom/completions/_chezmoi"
+fi
 
 # "sharkdp/fd" file finder, modern replacement for GNU find
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
