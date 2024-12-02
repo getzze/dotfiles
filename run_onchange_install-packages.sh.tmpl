@@ -14,5 +14,11 @@ echo "You need to manually install: lsd, fd-find, bat"
 sudo apt install lsd fd-find bat
 {{ end -}}
 
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+sudo apt install git-delta
+
+echo "You need to manually install: yazi, repgrep"
+{{ else -}}
 echo "You need to manually install: git-delta, yazi, repgrep"
+{{ end -}}
 {{ end -}}
