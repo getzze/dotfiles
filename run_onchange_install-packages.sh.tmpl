@@ -9,10 +9,10 @@ sudo pacman -S zsh ripgrep fzf lsd fd bat git-delta yazi repgrep
 sudo apt install zsh ripgrep fzf
 
 {{ if and (eq .chezmoi.osRelease.id "debian") (le (int .chezmoi.osRelease.versionID) 11) -}}
-echo "Manually install: lsd, rust-fd-find, rust-bat"
+echo "You need to manually install: lsd, fd-find, bat"
 {{ else -}}
-sudo apt install lsd, rust-fd-find, rust-bat
+sudo apt install lsd fd-find bat
 {{ end -}}
 
-echo "Manually install: git-delta, yazi, repgrep"
+echo "You need to manually install: git-delta, yazi, repgrep"
 {{ end -}}
