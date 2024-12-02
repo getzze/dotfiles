@@ -167,9 +167,9 @@ fi
 if [ -d /opt/miniconda3 ]; then
     CONDA_INSTALL_DIR="/opt/miniconda3"
 elif [ -d ~/miniforge3 ]; then
-    CONDA_INSTALL_DIR="~/miniforge3"
+    CONDA_INSTALL_DIR="$HOME/miniforge3"
 elif [ -d ~/miniconda3 ]; then
-    CONDA_INSTALL_DIR="~/miniconda3"
+    CONDA_INSTALL_DIR="$HOME/miniconda3"
 fi
 
 start_conda () {
