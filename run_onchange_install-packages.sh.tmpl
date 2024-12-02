@@ -7,7 +7,7 @@ sudo pacman -S zsh ripgrep fzf lsd yazi
 #!/bin/sh
 
 sudo apt install zsh ripgrep fzf
-{{ if not ((eq .chezmoi.osRelease.id "debian") and (le .chezmoi.osRelease.versionId 11)) -}}
+{{ if not (and (eq .chezmoi.osRelease.id "debian") (le .chezmoi.osRelease.versionId 11)) -}}
 sudo apt install lsd
 {{ end -}}
 {{ end -}}
