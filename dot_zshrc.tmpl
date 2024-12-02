@@ -203,6 +203,6 @@ stop_conda () {
 # <<< conda initialize <<<
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" -}}
-export PATH="$PATH:$HOME/.cargo/bin" 
+export PATH="$PATH:$HOME/.cargo/bin"
 {{ end -}}
 
