@@ -167,10 +167,12 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Conda init
-if [ -d /opt/miniconda3 ]; then
-    CONDA_INSTALL_DIR="/opt/miniconda3"
+if [ -d /opt/miniforge ]; then
+    CONDA_INSTALL_DIR="/opt/miniforge"
 elif [ -d ~/miniforge3 ]; then
     CONDA_INSTALL_DIR="$HOME/miniforge3"
+elif [ -d /opt/miniconda3 ]; then
+    CONDA_INSTALL_DIR="/opt/miniconda3"
 elif [ -d ~/miniconda3 ]; then
     CONDA_INSTALL_DIR="$HOME/miniconda3"
 fi
